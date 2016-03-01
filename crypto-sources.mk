@@ -13,4 +13,5 @@ LOCAL_SRC_FILES_x86_64 := $(linux_x86_64_sources)
 LOCAL_SRC_FILES_arm := $(linux_arm_sources)
 LOCAL_SRC_FILES_arm64 := $(linux_aarch64_sources)
 endif
+LOCAL_SRC_FILES += $(LOCAL_SRC_FILES_$(TARGET_ARCH))
 LOCAL_SRC_FILES += $(crypto_sources)
