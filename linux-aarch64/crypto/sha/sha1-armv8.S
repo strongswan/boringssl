@@ -1212,4 +1212,5 @@ sha1_block_armv8:
 .align	2
 .align	2
 .comm	OPENSSL_armcap_P,4,4
+.hidden	OPENSSL_armcap_P
 #endif

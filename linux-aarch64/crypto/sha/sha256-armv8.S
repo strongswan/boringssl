@@ -1142,4 +1142,5 @@ sha256_block_armv8:
 	ret
 .size	sha256_block_armv8,.-sha256_block_armv8
 .comm	OPENSSL_armcap_P,4,4
+.hidden	OPENSSL_armcap_P
 #endif
