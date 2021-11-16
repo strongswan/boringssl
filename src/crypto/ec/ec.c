@@ -887,3 +887,19 @@ void EC_GROUP_set_point_conversion_form(EC_GROUP *group,
     abort();
   }
 }
+
+size_t EC_get_builtin_curves(EC_builtin_curve *r, size_t nitems) {
+  unsigned num_built_in_curves, i;
+
+  for (num_built_in_curves = 0;; num_built_in_curves++) {
+    if (OPENSSL_built_in_curves[num_built_in_curves].nid == NID_undef) {
+      break;
+    }
+  }
+
+  for (i = 0; i < nitems && i < num_built_in_curves; i++) {
+    r[i].comment = OPENSSL_built_in_curves[i].data->comment;
+    r[i].nid = OPENSSL_built_in_curves[i].nid;
+  }
+  return num_built_in_curves;
+}

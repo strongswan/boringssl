@@ -84,7 +84,7 @@ typedef struct ec_point_st EC_POINT;
 /** Enum for the point conversion form as defined in X9.62 (ECDSA)
  *  for the encoding of a elliptic curve point (x,y) */
 typedef enum {
-	/** the point is encoded as z||x, where the octet z specifies 
+	/** the point is encoded as z||x, where the octet z specifies
 	 *  which solution of the quadratic equation y is  */
 	POINT_CONVERSION_COMPRESSED = 2,
 	/** the point is encoded as z||x||y, where z is the octet 0x04  */
@@ -314,6 +314,12 @@ OPENSSL_EXPORT int EC_METHOD_get_field_type(const EC_METHOD *meth);
 OPENSSL_EXPORT void EC_GROUP_set_point_conversion_form(
     EC_GROUP *group, point_conversion_form_t form);
 
+typedef struct {
+  int nid;
+  const char *comment;
+} EC_builtin_curve;
+
+OPENSSL_EXPORT size_t EC_get_builtin_curves(EC_builtin_curve *r, size_t nitems);
 
 /* Old code expects to get EC_KEY from ec.h. */
 #include <openssl/ec_key.h>
